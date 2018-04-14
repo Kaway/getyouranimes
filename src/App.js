@@ -6,6 +6,10 @@ import netflix from './data/netflix.json';
 import wakanim from './data/wakanim.json';
 import adn from './data/adn.json';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Col } from 'reactstrap';
+import { Table } from 'reactstrap';
+
 
 /* const animes = [
     {'title': 'Naruto', 'provider': 'Crunchyroll'},
@@ -73,11 +77,21 @@ class App extends Component {
             To get started, edit <code>src/App.js</code> and save to reload.
           </p>
         </div>
-        <div>
-          <FilteringInput onchange={this.filterAnimes} />
-          <FilteringSelect providers={[...new Set(animes.map(x => x.provider ))]} onchange={this.filterProviders} />
-          <AnimeTable list={animes} />
-        </div>
+        <Container fluid>
+          <Row>
+            <Col xs={{ size: "auto", offset : 2 }}>
+              <FilteringInput onchange={this.filterAnimes} />
+            </Col>
+            <Col xs={{ size : "auto"}}>
+              <FilteringSelect providers={[...new Set(animes.map(x => x.provider ))]} onchange={this.filterProviders} />
+            </Col>
+          </Row>
+          <Row className="mt-5">
+            <Col xs={{ size: 8, offset : 2 }}>
+              <AnimeTable list={animes} />
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
@@ -87,14 +101,20 @@ class AnimeTable extends Component {
 
   render() {
     return (
-      <table>
+      <Table responsive striped size="sm">
+        <thead>
+          <tr>
+            <th>Tile</th>
+            <th>Provider</th>
+          </tr>
+        </thead>
         <tbody>
           {this.props.list.map((anime, index) =>
             <AnimeLine key={index} index={index} title={anime.title} 
               provider={anime.provider} onChangeListener={this.deleteLine}/>
             )}
           </tbody>
-      </table>
+      </Table>
     );
   }
 
