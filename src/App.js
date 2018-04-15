@@ -7,7 +7,7 @@ import wakanim from './data/wakanim.json';
 import adn from './data/adn.json';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Jumbotron, Row, Col } from 'reactstrap';
 import { Table } from 'reactstrap';
 
 import './fontawesome-free-5.0.10/svg-with-js/js/fontawesome-all.min.js';
@@ -82,16 +82,11 @@ class App extends Component {
     const animes = this.state.animes;
     return (
       <div>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
-        </div>
-        <Container fluid>
+        <Container fluid style={{"padding": "0px"}}>
+          <Jumbotron fluid className="text-center" style={{"background-color":"#414141"}}>
+            <h1 className="" style={{ "color" : "white" }}>Anime Scraper</h1>
+            <p className="lead" style={{ "color" : "white" }}>Find your legal anime provider !</p>
+          </Jumbotron>
           <Row>
             <Col xs={{ size: "auto", offset : 1 }}>
               <b>Filters</b> <i className="fas fa-filter fa-lg"></i>
@@ -166,7 +161,7 @@ class FilteringInput extends Component {
 
   render() {
     return (
-      <input type="text" value={this.props.animeFilterValue} placeholder="Start typing a title" onChange={this.filterAnimes}/>
+      <input type="text" value={this.props.animeFilterValue} className="form-control" placeholder="Start typing a title" onChange={this.filterAnimes}/>
     );
   }
 
@@ -188,7 +183,7 @@ class FilteringSelect extends Component {
       <option key={provider} value={provider}>{provider}</option>
     );
     return (
-      <select value={this.props.selectedProvider} onChange={this.filterProviders}>
+      <select value={this.props.selectedProvider} className="form-control" onChange={this.filterProviders}>
         <option label=""></option>
         {options}
       </select>
