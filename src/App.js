@@ -10,6 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'reactstrap';
 import { Table } from 'reactstrap';
 
+import './fontawesome-free-5.0.10/svg-with-js/js/fontawesome-all.min.js';
+
 
 /* const animes = [
     {'title': 'Naruto', 'provider': 'Crunchyroll'},
@@ -23,7 +25,8 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { animes : animes, defaultAnimes : animes, animeFilter : "", providerFilter : ""};
+    this.state = { animes : animes, defaultAnimes : animes, animeFilter : "", 
+    providerFilter : "", selectedProvider : "", animeFilterValue : ""};
   }
 
   filter = (providerFilter, animeFilter) => {
@@ -49,18 +52,30 @@ class App extends Component {
       filtered = this.state.animes;
     }
 
-    this.setState({animes : filtered, animeFilter : animeFilter, providerFilter : providerFilter});
+    this.setState({animes : filtered, animeFilter : animeFilter, 
+      providerFilter : providerFilter});
 
   }
 
   filterAnimes = (value) => {
     console.log("Filtering by title : " + value);
+    this.setState({ animeFilterValue : value});
     this.filter(this.state.providerFilter, value);
   }
 
   filterProviders = (value) => {
     console.log("Filtering by provider : " + value);
+    this.setState({ selectedProvider : value});
     this.filter(value, this.state.animeFilter);
+  }
+
+  resetFilters = (e) => {
+    console.log("Reset filters");
+    this.setState({
+      animeFilter: "", providerFilter: "",
+      animes: this.state.defaultAnimes,
+      selectedProvider: "", animeFilterValue: ""
+    });
   }
   
   render() {
@@ -79,15 +94,22 @@ class App extends Component {
         </div>
         <Container fluid>
           <Row>
-            <Col xs={{ size: "auto", offset : 2 }}>
-              <FilteringInput onchange={this.filterAnimes} />
+            <Col xs={{ size: "auto", offset : 1 }}>
+              <b>Filters</b> <i className="fas fa-filter fa-lg"></i>
+            </Col>
+            <Col xs={{ size: "auto" }}>
+              <FilteringInput onchange={this.filterAnimes} animeFilterValue={this.state.animeFilterValue} />
             </Col>
             <Col xs={{ size : "auto"}}>
-              <FilteringSelect providers={[...new Set(animes.map(x => x.provider ))]} onchange={this.filterProviders} />
+              <FilteringSelect providers={[...new Set(animes.map(x => x.provider ))]} selectValue={this.state.providerFilter}
+                onchange={this.filterProviders} selectedProvider={this.state.selectedProvider} />
+            </Col>
+            <Col xs={{ size : "auto" }}>
+              <button type="button" className="btn btn-info" onClick={this.resetFilters}> Reset <i className="fas fa-trash-alt"></i></button>
             </Col>
           </Row>
           <Row className="mt-5">
-            <Col xs={{ size: 8, offset : 2 }}>
+            <Col xs={{ size: 10, offset : 1 }}>
               <AnimeTable list={animes} />
             </Col>
           </Row>
@@ -139,19 +161,13 @@ class AnimeLine extends Component {
 
 class FilteringInput extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {value : ""};
-  }
-
   filterAnimes = (event) => {
-    this.setState({ value : event.target.value});
     this.props.onchange(event.target.value);
   }
 
   render() {
     return (
-      <input type="text" defaultValue={this.state.value} onChange={this.filterAnimes}/>
+      <input type="text" value={this.props.animeFilterValue} placeholder="Start typing a title" onChange={this.filterAnimes}/>
     );
   }
 
@@ -161,11 +177,10 @@ class FilteringSelect extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { providers : props.providers, selected : ""};
+    this.state = { providers : props.providers};
   }
 
   filterProviders = (event) => {
-    this.setState({selected : event.target.value});
     this.props.onchange(event.target.value);
   }
 
@@ -174,8 +189,8 @@ class FilteringSelect extends Component {
       <option key={provider} value={provider}>{provider}</option>
     );
     return (
-      <select value={this.state.selected} onChange={this.filterProviders}>
-        <option value=""></option>
+      <select value={this.props.selectedProvider} onChange={this.filterProviders}>
+        <option label=""></option>
         {options}
       </select>
     );
