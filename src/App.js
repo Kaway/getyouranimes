@@ -87,21 +87,23 @@ class App extends Component {
             <h1 className="" style={{ "color" : "white" }}>Anime Scraper</h1>
             <p className="lead" style={{ "color" : "white" }}>Find your legal anime provider !</p>
           </Jumbotron>
+
           <Row>
-            <Col xs={{ size: "auto", offset : 1 }}>
+            <Col className="mt-2 align-self-center" xs={{ size: "10", offset : 1  }} sm={{ size : "auto", offset : 1 }}>
               <b>Filters</b> <i className="fas fa-filter fa-lg"></i>
             </Col>
-            <Col xs={{ size: "auto" }}>
+            <Col className="mt-2" xs={{ size: "10", offset : 1 }} sm={{ size : "auto", offset: 0 }}>
               <FilteringInput onchange={this.filterAnimes} animeFilterValue={this.state.animeFilterValue} />
             </Col>
-            <Col xs={{ size : "auto"}}>
+            <Col className="mt-2" xs={{ size : "10", offset : 1}} sm={{size : "auto", offset: 0 }}>
               <FilteringSelect providers={[...new Set(animes.map(x => x.provider ))]} selectValue={this.state.providerFilter}
                 onchange={this.filterProviders} selectedProvider={this.state.selectedProvider} />
             </Col>
-            <Col xs={{ size : "auto" }}>
+            <Col className="mt-2" xs={{ size : "10", offset : 1 }} sm={{size : "auto", offset: 0 }}>
               <button type="button" className="btn btn-info" onClick={this.resetFilters}> Reset <i className="fas fa-trash-alt"></i></button>
             </Col>
           </Row>
+
           <Row className="mt-5">
             <Col xs={{ size: 10, offset : 1 }}>
               <AnimeTable list={animes} />
