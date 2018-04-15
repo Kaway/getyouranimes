@@ -31,13 +31,12 @@ class App extends Component {
 
   filter = (providerFilter, animeFilter) => {
 
-    console.log("Filtering by title : [ " + animeFilter + " ]  and provider : [ " + providerFilter + " ]");
+    console.debug("Filtering by title : [ " + animeFilter + " ]  and provider : [ " + providerFilter + " ]");
     
     let filtered;
 
     if(providerFilter !== this.state.providerFilter || animeFilter !== this.state.animeFilter) {
       
-      console.log("Something has changed !");
       filtered = this.state.defaultAnimes;
 
       if(providerFilter !== "") {
@@ -58,19 +57,19 @@ class App extends Component {
   }
 
   filterAnimes = (value) => {
-    console.log("Filtering by title : " + value);
+    console.debug("Filtering by title : " + value);
     this.setState({ animeFilterValue : value});
     this.filter(this.state.providerFilter, value);
   }
 
   filterProviders = (value) => {
-    console.log("Filtering by provider : " + value);
+    console.debug("Filtering by provider : " + value);
     this.setState({ selectedProvider : value});
     this.filter(value, this.state.animeFilter);
   }
 
   resetFilters = (e) => {
-    console.log("Reset filters");
+    console.debug("Reset filters");
     this.setState({
       animeFilter: "", providerFilter: "",
       animes: this.state.defaultAnimes,
