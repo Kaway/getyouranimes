@@ -88,7 +88,7 @@ class App extends Component {
             <p className="lead" style={{ "color" : "white" }}>Find your legal anime provider !</p>
           </Jumbotron>
 
-          <Row>
+          <Row noGutters>
             <Col className="mt-2 align-self-center" xs={{ size: "10", offset : 1  }} sm={{ size : "auto", offset : 1 }}>
               <b>Filters</b> <i className="fas fa-filter fa-lg"></i>
             </Col>
@@ -104,7 +104,7 @@ class App extends Component {
             </Col>
           </Row>
 
-          <Row className="mt-5">
+          <Row noGutters className="mt-5">
             <Col xs={{ size: 10, offset : 1 }}>
               <AnimeTable list={animes} />
             </Col>
