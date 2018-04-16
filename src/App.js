@@ -122,7 +122,7 @@ class AnimeTable extends Component {
       <Table responsive striped size="sm">
         <thead>
           <tr>
-            <th>Tile</th>
+            <th>Title</th>
             <th>Provider</th>
           </tr>
         </thead>
