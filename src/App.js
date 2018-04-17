@@ -91,14 +91,14 @@ class App extends Component {
           <Row noGutters>
             <Col className="mt-2 align-self-center" xs={{ size: "10", offset : 1  }} sm={{ size : "auto", offset : 1 }}>
               <b>Filters</b> <i className="fas fa-filter fa-lg"></i>
-            </Col>
+            </Col>&nbsp;&nbsp;
             <Col className="mt-2" xs={{ size: "10", offset : 1 }} sm={{ size : "auto", offset: 0 }}>
               <FilteringInput onchange={this.filterAnimes} animeFilterValue={this.state.animeFilterValue} />
-            </Col>
+            </Col>&nbsp;&nbsp;
             <Col className="mt-2" xs={{ size : "10", offset : 1}} sm={{size : "auto", offset: 0 }}>
               <FilteringSelect providers={[...new Set(animes.map(x => x.provider ))]} selectValue={this.state.providerFilter}
                 onchange={this.filterProviders} selectedProvider={this.state.selectedProvider} />
-            </Col>
+            </Col>&nbsp;&nbsp;
             <Col className="mt-2" xs={{ size : "10", offset : 1 }} sm={{size : "auto", offset: 0 }}>
               <button type="button" className="btn btn-info" onClick={this.resetFilters}> Reset <i className="fas fa-trash-alt"></i></button>
             </Col>
