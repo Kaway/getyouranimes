@@ -124,6 +124,7 @@ class AnimeTable extends Component {
           <tr>
             <th>Title</th>
             <th>Provider</th>
+            <th>Link</th>
           </tr>
         </thead>
         <tbody>
@@ -148,6 +149,9 @@ class AnimeLine extends Component {
         </td>
         <td>
           {this.props.provider}
+        </td>
+        <td>
+          #
         </td>
       </tr>
     );
@@ -186,7 +190,7 @@ class FilteringSelect extends Component {
     );
     return (
       <select value={this.props.selectedProvider} className="form-control" onChange={this.filterProviders}>
-        <option label=""></option>
+        <option value="" label="-- Provider --">-- Provider --</option>
         {options}
       </select>
     );
