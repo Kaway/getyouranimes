@@ -44,7 +44,7 @@ class App extends Component {
       }
 
       if(animeFilter !== "") {
-        filtered = filtered.filter( x => x.title.toUpperCase().search(animeFilter.toUpperCase()) !== -1);
+        filtered = filtered.filter( x => x.title.toUpperCase().indexOf(animeFilter.toUpperCase()) !== -1);
       }
 
     } else {
