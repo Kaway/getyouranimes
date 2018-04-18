@@ -119,12 +119,12 @@ class AnimeTable extends Component {
 
   render() {
     return (
-      <Table responsive striped size="sm">
+      <div className="table-responsive">
+      <Table striped size="sm">
         <thead>
           <tr>
             <th>Title</th>
-            <th>Provider</th>
-            <th>Link</th>
+            <th style={{"width": "25%" }}>Provider</th>
           </tr>
         </thead>
         <tbody>
@@ -134,6 +134,7 @@ class AnimeTable extends Component {
             )}
           </tbody>
       </Table>
+      </div>
     );
   }
 
@@ -149,10 +150,7 @@ class AnimeLine extends Component {
         </td>
         <td>
           {this.props.provider}
-        </td>
-        <td>
-          #
-        </td>
+        </td> 
       </tr>
     );
   }
