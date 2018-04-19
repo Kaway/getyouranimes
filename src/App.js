@@ -153,9 +153,11 @@ class AnimeLine extends Component {
           {this.props.provider}
         </td>
         <td className="text-center">
-          <a href={this.props.link} target="blank">
-            <i className="fas fa-external-link-alt fa-xs"></i>
-          </a>
+          {this.props.link ?
+            <a href={this.props.link} target="blank">
+              <i className="fas fa-external-link-alt fa-xs"></i>
+            </a> : "N/A"
+          }
         </td>
       </tr>
     );
