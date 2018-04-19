@@ -83,7 +83,7 @@ class App extends Component {
     return (
       <div>
         <Container fluid style={{"padding": "0px"}}>
-          <Jumbotron fluid className="text-center" style={{"background-color":"#414141"}}>
+          <Jumbotron fluid className="text-center" style={{"backgroundColor":"#414141"}}>
             <h1 className="" style={{ "color" : "white" }}>Anime Scraper</h1>
             <p className="lead" style={{ "color" : "white" }}>Find your legal anime provider !</p>
           </Jumbotron>
@@ -124,13 +124,14 @@ class AnimeTable extends Component {
         <thead>
           <tr>
             <th>Title</th>
-            <th style={{"width": "25%" }}>Provider</th>
+            <th style={{"width": "20%" }}>Provider</th>
+            <th className="text-center">Link</th>
           </tr>
         </thead>
         <tbody>
           {this.props.list.map((anime, index) =>
             <AnimeLine key={index} index={index} title={anime.title} 
-              provider={anime.provider} onChangeListener={this.deleteLine}/>
+              provider={anime.provider} link={anime.link} onChangeListener={this.deleteLine}/>
             )}
           </tbody>
       </Table>
@@ -150,7 +151,12 @@ class AnimeLine extends Component {
         </td>
         <td>
           {this.props.provider}
-        </td> 
+        </td>
+        <td className="text-center">
+          <a href={this.props.link} target="blank">
+            <i className="fas fa-external-link-alt fa-xs"></i>
+          </a>
+        </td>
       </tr>
     );
   }
