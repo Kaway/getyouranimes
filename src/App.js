@@ -10,7 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Jumbotron, Row, Col } from 'reactstrap';
 import { Table } from 'reactstrap';
 
-import './fontawesome-free-5.0.10/svg-with-js/js/fontawesome-all.min.js';
+//import './fontawesome-free-5.0.10/svg-with-js/js/fontawesome-all.min.js';
+import './fontawesome-free-5.0.10/web-fonts-with-css/css/fontawesome-all.min.css'
 
 
 /* const animes = [
@@ -153,10 +154,11 @@ class AnimeLine extends Component {
           {this.props.provider}
         </td>
         <td className="text-center">
-          {this.props.link === "" ?
+          {this.props.link ? 
             <a href={this.props.link} target="blank">
               <i className="fas fa-external-link-alt fa-xs"></i>
-            </a> : "N/A"
+            </a> :
+            "N/A"
           }
         </td>
       </tr>
