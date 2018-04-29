@@ -14,7 +14,7 @@ const animesList = crunchy.concat(netflix).concat(wakanim).concat(adn);
 const initialState = {
   selectedProvider: "",
   titleFilter: "",
-  animes: animesList
+  animes: animesList,
 };
 
 const filtersReducer = (state = initialState, action) => {
@@ -24,7 +24,7 @@ const filtersReducer = (state = initialState, action) => {
         providerFilter: "",
         selectedProvider: "",
         titleFilter: "",
-        animes: defaultAnimes
+        animes: defaultAnimes,
       });
     case PROVIDER_FILTER:
       return Object.assign({}, state, {
@@ -33,10 +33,11 @@ const filtersReducer = (state = initialState, action) => {
           state.titleFilter, state.titleFilter, state.animes)
       });
     case TITLE_FILTER:
+      const filtered = filterAnimes(state.selectedProvider, state.selectedProvider,
+        action.value, state.titleFilter, state.animes);
       return Object.assign({}, state, {
         titleFilter: action.value,
-        animes: filterAnimes(state.selectedProvider, state.selectedProvider,
-          action.value, state.titleFilter, state.animes)
+        animes: filtered,
       });
     default:
       return state;

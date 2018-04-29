@@ -14,6 +14,7 @@ import './fontawesome-free-5.0.10/web-fonts-with-css/css/fontawesome-all.min.css
 import AnimeTable from './AnimeTable'
 import FilteringInput from './FilteringInput'
 import FilteringSelect from './FilteringSelect'
+import CounterBadge from './CounterBadge'
 import ResetButton from './ResetButton'
 
 
@@ -49,6 +50,12 @@ class App extends Component {
             </Row>
 
             <Row noGutters className="mt-5">
+              <Col xs={{ size: 12, offset : 1 }}>
+                <CounterBadge />
+              </Col>
+            </Row>
+
+            <Row noGutters className="mt-3">
               <Col xs={{ size: 10, offset : 1 }}>
                 <AnimeTable />
               </Col>
