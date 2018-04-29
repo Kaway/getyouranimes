@@ -44,6 +44,28 @@ const filtersReducer = (state = initialState, action) => {
 
 }
 
+function filterAnimes(providerFilter, oldP, animeFilter, oldA, actualAnimes) {
+  let filtered;
+
+  if(providerFilter !== oldP || animeFilter !== oldA) {
+    
+    filtered = defaultAnimes;
+
+    if(providerFilter !== "") {
+      filtered = filtered.filter(x => x.provider === providerFilter);
+    }
+
+    if(animeFilter !== "") {
+      filtered = filtered.filter( x => x.title.toUpperCase().indexOf(animeFilter.toUpperCase()) !== -1);
+    }
+
+  } else {
+    filtered = actualAnimes;
+  }
+
+  return filtered;
+}
+
 const gyaApp = combineReducers({
   filtersReducer
 });
