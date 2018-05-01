@@ -17,6 +17,8 @@ import FilteringSelect from './FilteringSelect'
 import CounterBadge from './CounterBadge'
 import ResetButton from './ResetButton'
 
+import connect from 'react-redux/lib/connect/connect'
+
 
 export const animes = crunchy.concat(netflix).concat(wakanim).concat(adn);
 export const defaultAnimes = animes;
@@ -33,7 +35,7 @@ class App extends Component {
               <h1 className="" style={{ "color" : "white" }}>Anime Scraper</h1>
               <p className="lead" style={{ "color" : "white" }}>Find your legal anime provider !</p>
             </Jumbotron>
-
+  
             <Row noGutters>
               <Col className="mt-2 align-self-center" xs={{ size: "10", offset : 1  }} sm={{ size : "auto", offset : 1 }}>
                 <b>Filters</b> <i className="fas fa-filter fa-lg"></i>
@@ -49,9 +51,11 @@ class App extends Component {
               </Col>
             </Row>
 
-            <Row noGutters className="mt-5">
+            <Row noGutters className="mt-3">
               <Col xs={{ size: 12, offset : 1 }}>
-                <CounterBadge />
+                <CounterBadge count={this.props.animeCount} >
+                  <span>animes</span>
+                </CounterBadge>
               </Col>
             </Row>
 
@@ -66,5 +70,11 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    animeCount: state.filtersReducer.animes.length
+  }
+};
 
-export default App;
+
+export default connect(mapStateToProps)(App);

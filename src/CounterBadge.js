@@ -4,20 +4,19 @@ import { Badge } from 'reactstrap';
 import connect from 'react-redux/lib/connect/connect';
 
 
-class ConnectedCounterBadge extends Component {
+class CounterBadge extends Component {
+
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
-      <h4><Badge color="primary">{this.props.count} animes</Badge></h4>
+      <h4><Badge color="primary">{this.props.count} {this.props.children}</Badge></h4>
     );
   }
 
 }
 
-const mapStateToProps = state => {
-  return {
-    count: state.filtersReducer.animes.length
-  };
-};
 
-export default connect(mapStateToProps)(ConnectedCounterBadge);
+export default CounterBadge;
