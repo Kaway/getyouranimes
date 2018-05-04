@@ -1,13 +1,13 @@
 # Get Your Animes
 
-Want to watch an anime from a legal source ?
+Want to watch an anime from a legal source ?  
 You don't know where to find your licensed anime ?
 
-=> https://getyouranimes.com
+[Get Your Animes](https://getyouranimes.com) helps you to find a legal streaming provider
 
 ## Data sources :
 - Crunchyroll
-- Netflix ( thanks to http://animeonnetflix.com/ )
+- Netflix ( thanks to http://animeonnetflix.com )
 - Wakanim
 - Anime Digital Network
 
