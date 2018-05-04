@@ -1,7 +1,7 @@
 # Get Your Animes
 
 Want to watch an anime from a legal source ?
-You don't know where to find your licenced anime ?
+You don't know where to find your licensed anime ?
 
 => https://getyouranimes.com
 
