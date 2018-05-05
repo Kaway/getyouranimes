@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import { Badge } from 'reactstrap';
 
-import connect from 'react-redux/lib/connect/connect';
-
-
 class CounterBadge extends Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
@@ -17,6 +10,5 @@ class CounterBadge extends Component {
   }
 
 }
-
 
 export default CounterBadge;
