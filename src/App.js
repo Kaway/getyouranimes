@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import crunchy from './data/crunchy.json';
-import netflix from './data/netflix.json';
-import wakanim from './data/wakanim.json';
-import adn from './data/adn.json';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Jumbotron, Row, Col } from 'reactstrap';
@@ -18,13 +14,18 @@ import CounterBadge from './CounterBadge'
 import ResetButton from './ResetButton'
 
 import connect from 'react-redux/lib/connect/connect'
+import {init} from './actions'
 
-
-export const animes = crunchy.concat(netflix).concat(wakanim).concat(adn);
-export const defaultAnimes = animes;
-export const providers = [...new Set(animes.map(x => x.provider ))];
 
 class App extends Component {
+
+  componentDidMount() {
+    fetch('data/all.json').then(response => {
+      response.json().then(value => {
+        this.props.init(value);
+      });
+    });
+  }
 
   render() {
 
@@ -65,10 +66,10 @@ class App extends Component {
           </Col>
         </Row>
 
-        <footer class="container-fluid">
-          <nav class="navbar navbar-dark fixed-bottom bg-dark">
-            <a class="navbar-brand" target="blank" href="https://github.com/Kaway/getyouranimes">
-                <i class="fab fa-github"></i>
+        <footer className="container-fluid">
+          <nav className="navbar navbar-dark fixed-bottom bg-dark">
+            <a className="navbar-brand" target="blank" href="https://github.com/Kaway/getyouranimes">
+                <i className="fab fa-github"></i>
             </a>
             <span className="navbar-text">
             <i className="fas fa-at"></i> Contact: contact@getyouranimes.com
@@ -76,10 +77,8 @@ class App extends Component {
           </nav>
         </footer>
 
-
       </Container>        
-
-        
+ 
     );
   }
 }
@@ -90,5 +89,9 @@ const mapStateToProps = state => {
   }
 };
 
-
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    init: animes => dispatch(init(animes))
+  }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import connect from 'react-redux/lib/connect/connect';
 
 import {providerFilter} from './actions'
-import {providers} from './App'
 
 class ConnectedFilteringSelect extends Component {
 
@@ -11,7 +10,7 @@ class ConnectedFilteringSelect extends Component {
   }
 
   render() {
-    const options = providers.map((provider) =>
+    const options = this.props.providers.map((provider) =>
       <option key={provider} value={provider}>{provider}</option>
     );
     return (
@@ -26,7 +25,8 @@ class ConnectedFilteringSelect extends Component {
 
 const mapStateToProps = state => {
   return {
-    value: state.filtersReducer.selectedProvider
+    value: state.filtersReducer.selectedProvider,
+    providers: state.filtersReducer.providers
   }
 };
 

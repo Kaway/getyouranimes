@@ -1,51 +1,53 @@
-import crunchy from './data/crunchy.json';
-import netflix from './data/netflix.json';
-import wakanim from './data/wakanim.json';
-import adn from './data/adn.json';
-
 import { combineReducers } from 'redux'
 
-import {RESET_FILTERS, PROVIDER_FILTER, TITLE_FILTER} from './actions'
-import {defaultAnimes} from './App'
-
-
-const animesList = crunchy.concat(netflix).concat(wakanim).concat(adn);
+import {RESET_FILTERS, PROVIDER_FILTER, TITLE_FILTER, INIT} from './actions'
 
 const initialState = {
+  defaultAnimes: [],
+  animes: [],
   selectedProvider: "",
   titleFilter: "",
-  animes: animesList,
+  providers: []
 };
 
 const filtersReducer = (state = initialState, action) => {
   switch(action.type) {
+    case INIT:
+      return Object.assign({}, state, {
+        defaultAnimes: action.value,
+        animes: action.value,
+        providers: [...new Set(action.value.map(x => x.provider ))]
+      });
     case RESET_FILTERS:
       return Object.assign({}, state, {
         providerFilter: "",
         selectedProvider: "",
         titleFilter: "",
-        animes: defaultAnimes,
+        animes: state.defaultAnimes,
       });
+      break;
     case PROVIDER_FILTER:
       return Object.assign({}, state, {
         selectedProvider: action.value,
         animes: filterAnimes(action.value, state.selectedProvider, 
-          state.titleFilter, state.titleFilter, state.animes)
+          state.titleFilter, state.titleFilter, state.animes, state.defaultAnimes)
       });
+      break;
     case TITLE_FILTER:
       const filtered = filterAnimes(state.selectedProvider, state.selectedProvider,
-        action.value, state.titleFilter, state.animes);
+        action.value, state.titleFilter, state.animes, state.defaultAnimes);
       return Object.assign({}, state, {
         titleFilter: action.value,
         animes: filtered,
       });
+      break;
     default:
       return state;
   }
 
 }
 
-function filterAnimes(providerFilter, oldP, animeFilter, oldA, actualAnimes) {
+function filterAnimes(providerFilter, oldP, animeFilter, oldA, actualAnimes, defaultAnimes) {
   let filtered;
 
   if(providerFilter !== oldP || animeFilter !== oldA) {
