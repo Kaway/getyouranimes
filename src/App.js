@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <Container fluid style={{"padding": "0px"}}>
         <Jumbotron fluid className="text-center" style={{"backgroundColor":"#414141"}}>
-          <h1 className="" style={{ "color" : "white" }}>Anime Scraper</h1>
+          <h1 className="" style={{ "color" : "white" }}>Get Your Animes !</h1>
           <p className="lead" style={{ "color" : "white" }}>Find your legal anime provider !</p>
         </Jumbotron>
   
