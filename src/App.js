@@ -57,21 +57,21 @@ class App extends Component {
 
         
         <Row noGutters>
-        <Col xs={{ size: 11, offset : 1 }}>
-            <Form>
-              <FormGroup row>
-                <Col className="mt-2" xs={{ size: "10", offset : 0 }} sm={{ size : "auto", offset: 0 }}>
-                    <FilteringInput />
-                </Col>
-                <Col className="mt-2" xs={{ size: "10", offset : 0 }} sm={{ size : "auto", offset: 0 }}>
-                  <FilteringSelect />
-                </Col>
-                <Col className="mt-2" xs={{ size: "10", offset : 0 }} sm={{ size : "auto", offset: 0 }}>
-                  <ResetButton />
-                </Col>
-              </FormGroup>
-            </Form>
-        </Col>
+          <Col className="mt-2" xs={{ size: "11", offset : 1 }} sm={{ size : "auto", offset: 1 }}>
+              <Form>
+                <div className="row no-gutters">
+                  <Col className="mt-2 mr-3" xs={{ size: "11", offset : 0 }} sm={{ size : "auto", offset: 0 }}>
+                      <FilteringInput />
+                  </Col>
+                  <Col className="mt-2 mr-3" xs={{ size: "11", offset : 0 }} sm={{ size : "auto", offset: 0 }}>
+                    <FilteringSelect />
+                  </Col>
+                  <Col className="mt-2" xs={{ size: "11", offset : 0 }} sm={{ size : "auto", offset: 0 }}>
+                    <ResetButton />
+                  </Col>
+                </div>
+              </Form>
+           </Col>
         </Row>
 
         <Row noGutters className="mt-3">
@@ -91,7 +91,7 @@ class App extends Component {
         <footer className="container-fluid">
           <nav className="navbar navbar-dark fixed-bottom bg-dark">
             <a className="navbar-brand" target="blank" href="https://github.com/Kaway/getyouranimes">
-                <span class="sr-only">Github</span>
+                <span className="sr-only">Github</span>
                 <i className="fab fa-github"></i>
             </a>
             <span className="navbar-text">
