@@ -4,6 +4,8 @@ import './App.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Jumbotron, Row, Col } from 'reactstrap';
+import { Form, FormGroup, Input } from 'reactstrap';
+
 
 import './fontawesome-free-5.0.10/web-fonts-with-css/css/fontawesome-all.min.css'
 
@@ -36,6 +38,7 @@ class App extends Component {
           <p className="lead" style={{ "color" : "white" }}>Find your legal anime provider !</p>
         </Jumbotron>
   
+        {/*
         <Row noGutters>
           <Col className="mt-2 align-self-center" xs={{ size: "10", offset : 1  }} sm={{ size : "auto", offset : 1 }}>
             <b>Filters</b> <i className="fas fa-filter fa-lg"></i>
@@ -49,7 +52,26 @@ class App extends Component {
           <Col className="mt-2" xs={{ size : "10", offset : 1 }} sm={{size : "auto", offset: 0 }}>
             <ResetButton />
           </Col>&nbsp;&nbsp;
+        </Row>
+        */}
 
+        
+        <Row noGutters>
+        <Col xs={{ size: 11, offset : 1 }}>
+            <Form>
+              <FormGroup row>
+                <Col className="mt-2" xs={{ size: "10", offset : 0 }} sm={{ size : "auto", offset: 0 }}>
+                    <FilteringInput />
+                </Col>
+                <Col className="mt-2" xs={{ size: "10", offset : 0 }} sm={{ size : "auto", offset: 0 }}>
+                  <FilteringSelect />
+                </Col>
+                <Col className="mt-2" xs={{ size: "10", offset : 0 }} sm={{ size : "auto", offset: 0 }}>
+                  <ResetButton />
+                </Col>
+              </FormGroup>
+            </Form>
+        </Col>
         </Row>
 
         <Row noGutters className="mt-3">
@@ -69,6 +91,7 @@ class App extends Component {
         <footer className="container-fluid">
           <nav className="navbar navbar-dark fixed-bottom bg-dark">
             <a className="navbar-brand" target="blank" href="https://github.com/Kaway/getyouranimes">
+                <span class="sr-only">Github</span>
                 <i className="fab fa-github"></i>
             </a>
             <span className="navbar-text">

@@ -25,14 +25,12 @@ const filtersReducer = (state = initialState, action) => {
         titleFilter: "",
         animes: state.defaultAnimes,
       });
-      break;
     case PROVIDER_FILTER:
       return Object.assign({}, state, {
         selectedProvider: action.value,
         animes: filterAnimes(action.value, state.selectedProvider, 
           state.titleFilter, state.titleFilter, state.animes, state.defaultAnimes)
       });
-      break;
     case TITLE_FILTER:
       const filtered = filterAnimes(state.selectedProvider, state.selectedProvider,
         action.value, state.titleFilter, state.animes, state.defaultAnimes);
@@ -40,7 +38,6 @@ const filtersReducer = (state = initialState, action) => {
         titleFilter: action.value,
         animes: filtered,
       });
-      break;
     default:
       return state;
   }

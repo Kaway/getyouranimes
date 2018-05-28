@@ -7,7 +7,10 @@ class ConnectedResetButton extends Component {
 
   render() {
     return (
-      <button type="button" className="btn btn-info" onClick={this.props.resetFilters}> Reset <i className="fas fa-trash-alt"></i></button>
+      <div>
+        <label>&nbsp;</label>
+        <button name="resetButton" type="button" className="btn btn-warning form-control" onClick={this.props.resetFilters}> Reset <i className="fas fa-trash-alt"></i></button>
+      </div>
     );
   }
 
