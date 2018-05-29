@@ -15,7 +15,7 @@ class ConnectedFilteringSelect extends Component {
     );
     return (
       <div>
-        <label for="provider"><span className="sr-only">Provider</span>&nbsp;</label>
+        <label htmlFor="provider"><span className="sr-only">Provider</span>&nbsp;</label>
         <select id="provider" name="provider" value={this.props.value} className="form-control" onChange={this.filterProviders}>
           <option value="" label="-- Provider --">-- Provider --</option>
         {options}

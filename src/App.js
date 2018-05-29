@@ -14,6 +14,7 @@ import FilteringInput from './FilteringInput'
 import FilteringSelect from './FilteringSelect'
 import CounterBadge from './CounterBadge'
 import ResetButton from './ResetButton'
+import RefreshModel from './RefreshModel'
 
 import connect from 'react-redux/lib/connect/connect'
 import {init} from './actions'
@@ -57,10 +58,13 @@ class App extends Component {
         </Row>
 
         <Row noGutters className="mt-3">
-          <Col xs={{ size: 11, offset : 1 }}>
+          <Col xs={{ size: 1, offset : 1 }}>
              <CounterBadge count={this.props.animeCount} >
               <span>animes</span>
              </CounterBadge>
+          </Col>
+          <Col xs={{ size: 5, offset : 0 }}>
+             <RefreshModel />
           </Col>
         </Row>
 
