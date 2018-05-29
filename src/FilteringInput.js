@@ -4,7 +4,7 @@ import connect from 'react-redux/lib/connect/connect';
 
 import {titleFilter} from './actions'
 
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+import {Label } from 'reactstrap';
 
 
 class ConnectedFilteringInput extends Component {
