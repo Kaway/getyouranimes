@@ -4,8 +4,6 @@ import connect from 'react-redux/lib/connect/connect';
 
 import {titleFilter} from './actions'
 
-import {Label} from 'reactstrap';
-
 
 class ConnectedRefreshModel extends Component {
       
@@ -32,7 +30,7 @@ class ConnectedRefreshModel extends Component {
 
     return (
       <div className="alert alert-success alert-dismissible fade show" role="alert">
-        New content is available ! <a href="#" className="alert-link"onClick={this.onClick}>Refresh</a>
+        New content is available ! <a className="alert-link"onClick={this.onClick}>Refresh</a>
         <button type="button" className="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

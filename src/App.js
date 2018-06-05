@@ -30,6 +30,10 @@ class App extends Component {
     });
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+  }
+
   render() {
 
     return (
@@ -41,7 +45,7 @@ class App extends Component {
   
         <Row noGutters>
           <Col className="mt-2" xs={{ size: "11", offset : 1 }} sm={{ size : "auto", offset: 1 }}>
-              <Form>
+              <Form onSubmit={this.handleSubmit}>
                 <div className="row no-gutters">
                   <Col className="mt-2 mr-3" xs={{ size: "11", offset : 0 }} sm={{ size : "auto", offset: 0 }}>
                       <FilteringInput />
@@ -58,12 +62,15 @@ class App extends Component {
         </Row>
 
         <Row noGutters className="mt-3">
-          <Col xs={{ size: 1, offset : 1 }}>
-             <CounterBadge count={this.props.animeCount} >
-              <span>animes</span>
-             </CounterBadge>
+          <Col xs={{ size: "auto", offset : 1 }}>
+              <CounterBadge count={this.props.animeCount} >
+                <span>animes</span>
+              </CounterBadge>
           </Col>
-          <Col xs={{ size: 5, offset : 0 }}>
+          <Col className="ml-3 d-sm-none" xs={{ size: 12, offset : 0 }}>
+             <RefreshModel />
+          </Col>
+          <Col className="ml-3" sm={{ size: "5", offset : 0 }}>
              <RefreshModel />
           </Col>
         </Row>

@@ -14,8 +14,9 @@ class ConnectedFilteringInput extends Component {
   }
 
   onKeyPress = (event) => {
-    console.log("key pressed" + event.keyCode);
-    console.log("key pressed" + event.key);
+    if(event.key === "Enter") {
+      event.target.blur();
+    }
 
   }
 
