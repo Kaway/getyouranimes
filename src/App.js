@@ -67,10 +67,10 @@ class App extends Component {
                 <span>animes</span>
               </CounterBadge>
           </Col>
-          <Col className="ml-3 d-sm-none" xs={{ size: 12, offset : 0 }}>
+          <Col className="d-block d-sm-none" xs={{ size: 10, offset : 1 }}>
              <RefreshModel />
           </Col>
-          <Col className="ml-3" sm={{ size: "5", offset : 0 }}>
+          <Col className="ml-4 d-none d-sm-block" sm={{ size: "5", offset : 0 }}>
              <RefreshModel />
           </Col>
         </Row>
