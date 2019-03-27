@@ -14,9 +14,10 @@ const filtersReducer = (state = initialState, action) => {
   switch(action.type) {
     case INIT:
       return Object.assign({}, state, {
-        defaultAnimes: action.value,
-        animes: action.value,
-        providers: [...new Set(action.value.map(x => x.provider ))]
+        defaultAnimes: action.value['animes'],
+        animes: action.value['animes'],
+        lastUpdate: action.value['lastUpdate'],
+        providers: [...new Set(action.value['animes'].map(x => x.provider ))]
       });
     case RESET_FILTERS:
       return Object.assign({}, state, {

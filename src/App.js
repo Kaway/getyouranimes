@@ -32,7 +32,7 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-  }
+  };
 
   render() {
 
@@ -67,6 +67,12 @@ class App extends Component {
                 <span>animes</span>
               </CounterBadge>
           </Col>
+          <Col className="" xs={{ size: 8, offset: 1 }} sm={{ size: "5", offset : 1 }}>
+              <span>Last update: <b>{this.props.lastUpdate}</b></span>
+          </Col>
+        </Row>
+
+        <Row noGutters className="mt-3">
           <Col className="d-block d-sm-none" xs={{ size: 10, offset : 1 }}>
              <RefreshModel />
           </Col>
@@ -85,10 +91,10 @@ class App extends Component {
           <nav className="navbar navbar-dark fixed-bottom bg-dark">
             <a className="navbar-brand" target="blank" href="https://github.com/Kaway/getyouranimes">
                 <span className="sr-only">Github</span>
-                <i className="fab fa-github"></i>
+                <i className="fab fa-github"/>
             </a>
             <span className="navbar-text">
-            <i className="fas fa-at"></i> Contact: contact@getyouranimes.com
+            <i className="fas fa-at"/> Contact: contact@getyouranimes.com
             </span>
           </nav>
         </footer>
@@ -101,7 +107,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    animeCount: state.filtersReducer.animes.length
+    animeCount: state.filtersReducer.animes.length,
+    lastUpdate: state.filtersReducer.lastUpdate,
   }
 };
 
