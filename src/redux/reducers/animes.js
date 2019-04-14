@@ -16,7 +16,8 @@ const animes = (state = initialState, action) => {
                     animes: action.value['animes'],
                     all: action.value['animes'],
                     lastUpdate: action.value['lastUpdate'],
-                    providers: [...new Set(state.all.map(x => x.provider ))],                });
+                    providers: [...new Set(action.value['animes'].map(x => x.provider ))],
+                });
         case RESET_FILTERS:
             return Object.assign({}, state, {
                 selectedProvider: "",
