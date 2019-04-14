@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import connect from 'react-redux/lib/connect/connect';
+import { connect } from 'react-redux'
 
-import {providerFilter} from './actions'
+import {providerFilter} from './redux/actions'
 
 class ConnectedFilteringSelect extends Component {
 
   filterProviders = (event) => {
     this.props.onchange(event.target.value);
-  }
+  };
 
   render() {
     const options = this.props.providers.map((provider) =>
@@ -18,8 +18,8 @@ class ConnectedFilteringSelect extends Component {
         <label htmlFor="provider"><span className="sr-only">Provider</span>&nbsp;</label>
         <select id="provider" name="provider" value={this.props.value} className="form-control" onChange={this.filterProviders}>
           <option value="" label="-- Provider --">-- Provider --</option>
-        {options}
-      </select>
+          {options}
+        </select>
       </div>
     );
   }
@@ -28,8 +28,8 @@ class ConnectedFilteringSelect extends Component {
 
 const mapStateToProps = state => {
   return {
-    value: state.filtersReducer.selectedProvider,
-    providers: state.filtersReducer.providers
+    value: state.animes.selectedProvider,
+    providers: state.animes.providers
   }
 };
 

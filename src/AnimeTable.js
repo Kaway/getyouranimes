@@ -34,7 +34,9 @@ class ConnectedAnimeTable extends Component {
 }
 
 const mapStateToProps = state => {
-  return { animes: state.filtersReducer.animes };
+  return {
+    animes: state.animes.all
+  };
 };
 
 

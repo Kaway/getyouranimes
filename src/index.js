@@ -6,10 +6,7 @@ import { Provider } from 'react-redux'
 
 import registerServiceWorker from './registerServiceWorker';
 
-import { createStore } from 'redux'
-import gyaApp from './reducers'
-
-const store = createStore(gyaApp);
+import store from "./redux/store"
 
 ReactDOM.render(
   <Provider store={store}>
@@ -17,4 +14,5 @@ ReactDOM.render(
   </Provider>, 
   document.getElementById('root')
 );
+
 registerServiceWorker();

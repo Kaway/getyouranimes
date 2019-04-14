@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import {resetFilters} from './actions'
-import connect from 'react-redux/lib/connect/connect';
+import {resetFilters} from './redux/actions'
+import { connect } from 'react-redux'
 
 class ConnectedResetButton extends Component {
 
