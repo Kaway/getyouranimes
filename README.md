@@ -18,5 +18,7 @@ I'm working on gathering data from differents location to build a better databas
 
 ## How it works
 Scraping is powered by [Scrapy](https://scrapy.org/)
+
 Some bash to shape and upload the data
+
 And a cron job
