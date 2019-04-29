@@ -12,8 +12,8 @@ You don't know where to find your licensed anime ?
 - Anime Digital Network
 
 ## Limitations
-All data have been gathered with a French IP, so maybe the data will not be accurate for you location.
-Netflix data has been gathered through http://animeonnetflix.com, so the animes displayed are only the one avalaible in US (e.g One Punch is not available on Netflix is US, but is on Netflix France).
+All data have been gathered with a French IP, so maybe the data will not be accurate for you location.  
+Netflix data has been gathered through http://animeonnetflix.com, so the animes displayed are only the one avalaible in US (e.g One Punch is not available on Netflix is US, but is on Netflix France).  
 I'm working on gathering data from differents location to build a better database.
 
 ## How it works
