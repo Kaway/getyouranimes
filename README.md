@@ -17,6 +17,12 @@ Netflix data has been gathered through http://animeonnetflix.com, so the animes 
 I'm working on gathering data from differents location to build a better database.
 
 ## How it works
+### Backend:  
 Scraping is powered by [Scrapy](https://scrapy.org/)  
 Some bash to shape and upload the data  
 And a cron job  
+On a Raspberry Pi
+
+### Frontend:  
+Very basic ReactJS + Redux
+Bootstrap 4 (with [ReactStrap](https://reactstrap.github.io/))  
