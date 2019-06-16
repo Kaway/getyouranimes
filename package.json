@@ -6,7 +6,7 @@
     "bootstrap": "^4.1.0",
     "json-loader": "^0.5.7",
     "react": "16.8.6",
-    "react-dom": "16.4.2",
+    "react-dom": "16.8.6",
     "react-redux": "5.0.7",
     "react-scripts": "^2.1.8",
     "reactstrap": "8.0.0",
