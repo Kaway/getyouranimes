@@ -8,7 +8,7 @@
     "react": "16.4.2",
     "react-dom": "16.4.2",
     "react-redux": "5.0.7",
-    "react-scripts": "1.1.4",
+    "react-scripts": "^2.1.8",
     "reactstrap": "8.0.0",
     "redux": "4.0.0"
   },
@@ -17,5 +17,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "devDependencies": {
+    "npm-audit": "0.0.3"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
