@@ -24,5 +24,5 @@ And a cron job
 On a Raspberry Pi
 
 ### Frontend:  
-Very basic ReactJS + Redux
+Very basic ReactJS + Redux  
 Bootstrap 4 (with [ReactStrap](https://reactstrap.github.io/))  
