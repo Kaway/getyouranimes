@@ -1,6 +1,6 @@
-import { INIT, PROVIDER_FILTER, RESET_FILTERS, TITLE_FILTER} from "./actionTypes";
+import {INIT, PROVIDER_FILTER, RESET_FILTERS, TITLE_FILTER} from "./actionTypes";
 
-export function resetFilters() {
+export function resetFiltersAction() {
   return {
     type: RESET_FILTERS
   };
@@ -20,7 +20,7 @@ export function providerFilter(text) {
   };
 }
 
-export const init = animes => ({
-    type: INIT,
-    value: animes
+export const initAnimes = animes => ({
+  type: INIT,
+  value: animes
 });

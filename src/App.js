@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux'
 
-import {Col, Container, Form, Jumbotron, Row} from 'reactstrap';
+import {Col, Container, Jumbotron, Row} from 'reactstrap';
 
 import './fontawesome-free-5.0.10/web-fonts-with-css/css/fontawesome-all.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,99 +9,85 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import AnimeTable from './AnimeTable'
-import FilteringInput from './FilteringInput'
-import FilteringSelect from './FilteringSelect'
+import FiltersLine from './FiltersLine'
 import CounterBadge from './CounterBadge'
-import ResetButton from './ResetButton'
 
-import {init} from './redux/actions'
+import {initAnimes} from './redux/actions'
 
 
-class App extends Component {
+const Header = () => {
+    return (
+        <Jumbotron fluid className="text-center" style={{"backgroundColor": "#414141"}}>
+            <h1 className="" style={{"color": "white"}}>Get Your Animes !</h1>
+            <p className="lead" style={{"color": "white"}}>Find your legal anime provider !</p>
+        </Jumbotron>
+    );
+};
 
-    componentDidMount() {
+const App = ({animeCount, lastUpdate, init}) => {
+
+    //const [init, setInit] = useState([]);
+
+    useEffect(() => {
         fetch('data/all.json').then(response => {
             response.json().then(value => {
-                this.props.init(value);
+                //setInit(value);
+                init(value);
             });
         });
-        this.forceUpdate();
-    }
+    }, [init]);
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-    };
+    return (
+        <Container fluid style={{"padding": "0px"}}>
+            <Header/>
 
-    render() {
+            <FiltersLine/>
 
-        return (
-            <Container fluid style={{"padding": "0px"}}>
-                <Jumbotron fluid className="text-center" style={{"backgroundColor": "#414141"}}>
-                    <h1 className="" style={{"color": "white"}}>Get Your Animes !</h1>
-                    <p className="lead" style={{"color": "white"}}>Find your legal anime provider !</p>
-                </Jumbotron>
+            <Row noGutters className="mt-3">
+                <Col xs={{size: "auto", offset: 1}}>
+                    <CounterBadge count={animeCount}>
+                        <span>animes</span>
+                    </CounterBadge>
+                </Col>
+                <Col className="" xs={{size: 8, offset: 1}} sm={{size: "5", offset: 1}}>
+                    <span>Last update: <b>{lastUpdate}</b></span>
+                </Col>
+            </Row>
 
-                <Row noGutters>
-                    <Col className="mt-2" xs={{size: "11", offset: 1}} sm={{size: "auto", offset: 1}}>
-                        <Form onSubmit={this.handleSubmit}>
-                            <div className="row no-gutters">
-                                <Col className="mt-2 mr-3" xs={{size: "11", offset: 0}} sm={{size: "auto", offset: 0}}>
-                                    <FilteringInput/>
-                                </Col>
-                                <Col className="mt-2 mr-3" xs={{size: "11", offset: 0}} sm={{size: "auto", offset: 0}}>
-                                    <FilteringSelect/>
-                                </Col>
-                                <Col className="mt-2" xs={{size: "11", offset: 0}} sm={{size: "auto", offset: 0}}>
-                                    <ResetButton/>
-                                </Col>
-                            </div>
-                        </Form>
-                    </Col>
-                </Row>
-
-                <Row noGutters className="mt-3">
-                    <Col xs={{size: "auto", offset: 1}}>
-                        <CounterBadge count={this.props.animeCount}>
-                            <span>animes</span>
-                        </CounterBadge>
-                    </Col>
-                    <Col className="" xs={{size: 8, offset: 1}} sm={{size: "5", offset: 1}}>
-                        <span>Last update: <b>{this.props.lastUpdate}</b></span>
-                    </Col>
-                </Row>
-
-{/*                <Row noGutters className="m-3">
+            {/*
+                 <Row noGutters className="m-3">
                     <Col className="d-block d-sm-none" xs={{size: 10, offset: 1}}>
                         <RefreshModel/>
                     </Col>
                     <Col className="ml-4 d-none d-sm-block" sm={{size: "5", offset: 0}}>
                         <RefreshModel/>
                     </Col>
-                </Row>*/}
-
-                <Row noGutters className="mt-3 pb-5">
-                    <Col xs={{size: 10, offset: 1}}>
-                        <AnimeTable/>
-                    </Col>
                 </Row>
+                */}
 
-                <footer className="container-fluid">
-                    <nav className="navbar navbar-dark fixed-bottom bg-dark">
-                        <a className="navbar-brand" target="blank" href="https://github.com/Kaway/getyouranimes">
-                            <span className="sr-only">Github</span>
-                            <i className="fab fa-github"/>
-                        </a>
-                        <span className="navbar-text">
-            <i className="fas fa-at"/> Contact: contact@getyouranimes.com
-            </span>
-                    </nav>
-                </footer>
+            <Row noGutters className="mt-3 pb-5">
+                <Col xs={{size: 10, offset: 1}}>
+                    <AnimeTable/>
+                </Col>
+            </Row>
 
-            </Container>
+            <footer className="container-fluid">
+                <nav className="navbar navbar-dark fixed-bottom bg-dark">
+                    <a className="navbar-brand" target="blank" href="https://github.com/Kaway/getyouranimes">
+                        <span className="sr-only">Github</span>
+                        <i className="fab fa-github"/>
+                    </a>
+                    <span className="navbar-text">
+                        <i className="fas fa-at"/> Contact: contact@getyouranimes.com
+                    </span>
+                </nav>
+            </footer>
 
-        );
-    }
-}
+        </Container>
+
+    );
+
+};
 
 const mapStateToProps = state => {
     return {
@@ -112,7 +98,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        init: animes => dispatch(init(animes))
+        init: animes => dispatch(initAnimes(animes))
     }
 };
 

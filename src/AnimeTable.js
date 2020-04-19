@@ -1,35 +1,32 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux";
+import React from 'react';
+import {connect} from "react-redux";
 
 import AnimeLine from './AnimeLine'
 
-import { Table } from 'reactstrap';
+import {Table} from 'reactstrap';
 
 
+const ConnectedAnimeTable = ({animes}) => {
 
-class ConnectedAnimeTable extends Component {
-
-  render() {
-    return (
+  return (
       <div className="table-responsive">
-      <Table striped size="sm">
-        <thead>
+        <Table striped size="sm">
+          <thead>
           <tr>
             <th>Title</th>
-            <th style={{"width": "20%" }}>Provider</th>
+            <th style={{"width": "20%"}}>Provider</th>
             <th className="text-center">Link</th>
           </tr>
-        </thead>
-        <tbody>
-          {this.props.animes.map((anime, index) =>
-            <AnimeLine key={index} index={index} title={anime.title} 
-              provider={anime.provider} link={anime.link} onChangeListener={this.deleteLine}/>
-            )}
+          </thead>
+          <tbody>
+          {animes.map((anime, index) =>
+              <AnimeLine key={index} index={index} title={anime.title}
+                         provider={anime.provider} link={anime.link}/>
+          )}
           </tbody>
-      </Table>
+        </Table>
       </div>
-    );
-  }
+  );
 
 }
 
@@ -40,6 +37,4 @@ const mapStateToProps = state => {
 };
 
 
-const AnimeTable = connect(mapStateToProps)(ConnectedAnimeTable);
-
-export default AnimeTable;
+export default connect(mapStateToProps)(ConnectedAnimeTable);

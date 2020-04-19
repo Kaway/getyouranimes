@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import React from 'react';
+import {connect} from 'react-redux'
 
 import {providerFilter} from './redux/actions'
 
-class ConnectedFilteringSelect extends Component {
+const ConnectedFilteringSelect = ({value, providers, onchange}) => {
 
-  filterProviders = (event) => {
-    this.props.onchange(event.target.value);
+  const filterProviders = (event) => {
+    onchange(event.target.value);
   };
 
-  render() {
-    const options = this.props.providers.map((provider) =>
+  const options = providers.map((provider) =>
       <option key={provider} value={provider}>{provider}</option>
-    );
-    return (
+  );
+  return (
       <div>
         <label htmlFor="provider"><span className="sr-only">Provider</span>&nbsp;</label>
-        <select id="provider" name="provider" value={this.props.value} className="form-control" onChange={this.filterProviders}>
+        <select id="provider" name="provider" value={value} className="form-control" onChange={filterProviders}>
           <option value="" label="-- Provider --">-- Provider --</option>
           {options}
         </select>
       </div>
-    );
-  }
+  );
 
 }
 

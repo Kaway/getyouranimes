@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class AnimeLine extends Component {
-  
-  render() {
+const AnimeLine = ({title, provider, link}) => {
+
     return (
-      <tr>
-        <td>
-          {this.props.title}
-        </td>
-        <td>
-          {this.props.provider}
-        </td>
-        <td className="text-center">
-          {this.props.link ? 
-            <a href={this.props.link} target="blank">
-              <span className="sr-only">{this.props.title}</span>
-              <i className="fas fa-external-link-alt fa-xs"></i>
-            </a> :
-            "N/A"
-          }
-        </td>
-      </tr>
+        <tr>
+            <td>
+                {title}
+            </td>
+            <td>
+                {provider}
+            </td>
+            <td className="text-center">
+                {link ?
+                    <a href={link} target="blank">
+                        <span className="sr-only">{title}</span>
+                        <i className="fas fa-external-link-alt fa-xs"/>
+                    </a> :
+                    "N/A"
+                }
+            </td>
+        </tr>
     );
-  }
-
 }
 
 export default AnimeLine;

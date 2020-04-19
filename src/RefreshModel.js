@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 import {titleFilter} from './redux/actions'
 
 
 class ConnectedRefreshModel extends Component {
-      
+
   state = {
     show: false
   };
 
   componentDidMount() {
-    window.addEventListener("newContentAvailable", () =>  {
+    window.addEventListener("newContentAvailable", () => {
       this.setState({
         show: true
       });
@@ -24,17 +24,17 @@ class ConnectedRefreshModel extends Component {
   };
 
   render() {
-    if(!this.state.show) {
-        return null;
+    if (!this.state.show) {
+      return null;
     }
 
     return (
-      <div className="alert alert-success alert-dismissible fade show" role="alert">
-        New content is available ! <a className="alert-link"onClick={this.onClick}>Refresh</a>
-        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+        <div className="alert alert-success alert-dismissible fade show" role="alert">
+          New content is available ! <a className="alert-link" onClick={this.onClick}>Refresh</a>
+          <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
     );
   }
 

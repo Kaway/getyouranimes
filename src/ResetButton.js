@@ -1,25 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import {resetFilters} from './redux/actions'
-import { connect } from 'react-redux'
+import {resetFiltersAction} from './redux/actions'
+import {connect} from 'react-redux'
 
-class ConnectedResetButton extends Component {
+const ConnectedResetButton = ({resetFilters}) => {
 
-  render() {
     return (
-      <div>
-        <label>&nbsp;</label>
-        <button name="resetButton" type="button" className="btn btn-warning form-control" onClick={this.props.resetFilters}> Reset <i className="fas fa-trash-alt"></i></button>
-      </div>
+        <div>
+            <label>&nbsp;</label>
+            <button name="resetButton" type="button" className="btn btn-warning form-control"
+                    onClick={resetFilters}> Reset <i className="fas fa-trash-alt" /></button>
+        </div>
     );
-  }
-
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    resetFilters: () => dispatch(resetFilters())
-  };
+    return {
+        resetFilters: () => dispatch(resetFiltersAction())
+    };
 };
 
 export default connect(null, mapDispatchToProps)(ConnectedResetButton);

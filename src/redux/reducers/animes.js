@@ -1,4 +1,4 @@
-import { INIT, RESET_FILTERS, TITLE_FILTER, PROVIDER_FILTER} from "../actionTypes";
+import {INIT, PROVIDER_FILTER, RESET_FILTERS, TITLE_FILTER} from "../actionTypes";
 
 const initialState = {
     all: [],
@@ -9,14 +9,14 @@ const initialState = {
 };
 
 const animes = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case INIT:
             return Object.assign({}, state,
                 {
                     animes: action.value['animes'],
                     all: action.value['animes'],
                     lastUpdate: action.value['lastUpdate'],
-                    providers: [...new Set(action.value['animes'].map(x => x.provider ))],
+                    providers: [...new Set(action.value['animes'].map(x => x.provider))],
                 });
         case RESET_FILTERS:
             return Object.assign({}, state, {
@@ -47,22 +47,21 @@ const animes = (state = initialState, action) => {
 function filterAnimes(providerFilter, oldP, animeFilter, oldA, actualAnimes, defaultAnimes) {
     let filtered;
 
-    if(providerFilter !== oldP || animeFilter !== oldA) {
+    if (providerFilter !== oldP || animeFilter !== oldA) {
 
         filtered = defaultAnimes;
 
-        if(providerFilter !== "") {
+        if (providerFilter !== "") {
             filtered = filtered.filter(x => x.provider === providerFilter);
         }
 
-        if(animeFilter !== "") {
-            filtered = filtered.filter( x => x.title.toUpperCase().indexOf(animeFilter.toUpperCase()) !== -1);
+        if (animeFilter !== "") {
+            filtered = filtered.filter(x => x.title.toUpperCase().indexOf(animeFilter.toUpperCase()) !== -1);
         }
 
     } else {
         filtered = actualAnimes;
     }
-    console.log(filtered);
     return filtered;
 }
 

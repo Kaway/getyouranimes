@@ -1,33 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
-import { titleFilter } from './redux/actions'
+import {titleFilter} from './redux/actions'
 
-import { Label } from 'reactstrap';
+import {Label} from 'reactstrap';
 
 
-class ConnectedFilteringInput extends Component {
+const ConnectedFilteringInput = ({value, onchange}) => {
 
-  filterAnimes = (event) => {
-    this.props.onchange(event.target.value);
+  const filterAnimes = (event) => {
+    onchange(event.target.value);
   };
 
-  onKeyPress = (event) => {
-    if(event.key === "Enter") {
+  const onKeyPress = (event) => {
+    if (event.key === "Enter") {
       event.target.blur();
     }
   };
 
-  render() {
-    return (
+  return (
       <div>
         <Label for="animeTitle">Title</Label>
-        <input id="animeTitle" name="animeTitle" type="text" className="form-control" value={this.props.value}
-               onChange={this.filterAnimes} onKeyPress={this.onKeyPress} placeholder="Start typing a title" />
+        <input id="animeTitle" name="animeTitle" type="text" className="form-control" value={value}
+               onChange={filterAnimes} onKeyPress={onKeyPress} placeholder="Start typing a title"/>
       </div>
-    );
-  }
+  );
 
 }
 
@@ -43,7 +41,6 @@ const mapStateToProps = state => {
     value: state.animes.titleFilter
   }
 };
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectedFilteringInput);
